@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Tweereader",
+  "version": "1.0.0",
+  "description": "A simple extension that harness the power of ChatGPT to get more context on interesting tweets!",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+},
+  "permissions": [ "activeTab", "scripting" ],
+  "host_permissions": [ "https://twitter.com/*" ],
+  "content_scripts": [
+    {
+      "matches": [ "https://twitter.com/*" ],
+      "js": [ "content.js" ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "icon.png" ],
+      "matches": [ "https://twitter.com/*" ]
+    }
+  ]
+}
